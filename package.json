@@ -1,0 +1,26 @@
+{
+  "name": "gc",
+  "version": "0.9.5",
+  "description": "Simple tabs for Electron applications",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ./start",
+    "demo": "electron ./start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "tab",
+    "tabs",
+    "webview"
+  ],
+  "author": "fugle",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.6.11"
+  },
+  "dependencies": {
+    "electron-tabs": "^0.9.5",
+    "ssh2": "^0.8.4"
+  }
+}
