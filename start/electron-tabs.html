@@ -6,13 +6,13 @@
     <style>
         .loginPag{
             padding: 5px;
-
             position: fixed;
             left: 40%;
             top: 30%;
             background-color: #e2dfdf;
             width: 250px;
             box-shadow: 2px 2px 2px #888888;
+            visibility: hidden;
         }
     </style>
 </head>
@@ -50,8 +50,8 @@
     });
 
     t1 = tabGroup.addTab({
-        title: 'baidu',
-        src: 'http://www.baidu.com',
+        title: 'addr',
+        src: '../html/exhibition.html',
     });
     t1.setTitle("192.168.0.105");
     t1.activate();

@@ -7,6 +7,8 @@
     font-size: 14px;
     -webkit-user-select: none;
     user-select: none;
+    margin-bottom:0px ;
+
 }
 
 .etabs-tabs {
@@ -126,6 +128,7 @@
 .etabs-views {
     border-top: 1px solid #aaa;
     height: calc(100vh - 33px);
+
 }
 
 .etab-view {

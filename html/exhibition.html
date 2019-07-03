@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EXH</title>
+    <style>
+        .tree{
+            width: 20%;
+            height: 100%;
+            overflow-x: auto;
+            overflow-y: auto;
+            background-color: rgba(255, 20, 147, 0.36);
+            position: absolute;
+
+        }
+
+        .main{
+            position: absolute;
+            width: 99%;
+            height: 99%;
+        }
+        .right{
+            width: 80%;
+            height: 100%;
+            left: 20%;
+            position: absolute;
+            margin: 0px;
+            padding: 0px;
+            display: inline-block;
+        }
+        .content{
+            width: 100%;
+            height: 70%;
+            position: relative;
+            background-color: #cccccc;
+            display: block;
+        }
+        .terminal{
+            width: 100%;
+            height: 30%;
+            background-color: antiquewhite;
+            position: relative;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="tree">
+
+    </div>
+    <div class="right">
+        <div class="content"></div>
+        <div class="terminal"></div>
+    </div>
+</div>
+
+<!--<div style="position: absolute;width: 80%;height: 100%;float: right">-->
+<!--    <div class="content"></div>-->
+<!--    <div class="terminal"></div>-->
+<!--</div>-->
+
+</body>
+</html>

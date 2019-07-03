@@ -18,6 +18,8 @@ if (!document) {
             right: 0;
             bottom: 0;
             left: 0;
+            padding:0px;
+            margin:0px;
         }
     `;
     let styleTag = document.createElement("style");
