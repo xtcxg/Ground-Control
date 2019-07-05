@@ -14,4 +14,8 @@ export class ReqManage{
     public distribute(msg:String){
 
     }
+
+    public Register(msg:{}){
+        
+    }
 }
