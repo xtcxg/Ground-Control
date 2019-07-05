@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "electron-tabs": "^0.9.5",
+    "nodejs-websocket": "^1.7.2",
     "ssh2": "^0.8.4"
   }
 }
