@@ -17,7 +17,7 @@
   "author": "fugle",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^1.6.11"
+    "electron": "^7.2.4"
   },
   "dependencies": {
     "electron-tabs": "^0.9.5",
