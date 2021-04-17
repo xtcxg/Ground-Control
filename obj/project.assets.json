@@ -8251,26 +8251,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jiajia\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Users\\miex\\.nuget\\packages\\": {},
+    "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jiajia\\source\\repos\\Ground-Control\\Ground-Control.csproj",
+      "projectUniqueName": "D:\\ProgramData\\Source\\Repos\\Ground-Control\\Ground-Control.csproj",
       "projectName": "Ground-Control",
-      "projectPath": "C:\\Users\\jiajia\\source\\repos\\Ground-Control\\Ground-Control.csproj",
-      "packagesPath": "C:\\Users\\jiajia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jiajia\\source\\repos\\Ground-Control\\obj\\",
+      "projectPath": "D:\\ProgramData\\Source\\Repos\\Ground-Control\\Ground-Control.csproj",
+      "packagesPath": "C:\\Users\\miex\\.nuget\\packages\\",
+      "outputPath": "D:\\ProgramData\\Source\\Repos\\Ground-Control\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\jiajia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\miex\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

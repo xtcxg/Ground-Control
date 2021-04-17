@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiteDB;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +9,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,7 +35,7 @@ namespace Ground_Control
         public App()
         {
             this.InitializeComponent();
-            this.Init();
+            this.InitAsync();
             this.Suspending += OnSuspending;
         }
 
@@ -102,8 +104,27 @@ namespace Ground_Control
             deferral.Complete();
         }
 
-        private void Init() 
+        private async void InitAsync() 
         {
+            Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            string path = storageFolder.Path;
+            System.Diagnostics.Trace.WriteLine(path);
+
+
+            //Windows.Storage.StorageFolder installedLocation = Windows.ApplicationModel.Package.Current.InstalledLocation;
+            //StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appdata:///res/file.txt"));
+            //string path = System.Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            //System.Diagnostics.Trace.WriteLine(path);
+            if (!System.IO.Directory.Exists(path + @"\plugin"))
+            {
+                await storageFolder.CreateFolderAsync("plugin");
+            }
+            if (!System.IO.Directory.Exists(path + @"\res"))
+            {
+                await storageFolder.CreateFolderAsync("res");
+            }
+
+            var db = new LiteDatabase(path + @"\res\Data.db");
             System.Diagnostics.Trace.WriteLine("init");
             
 

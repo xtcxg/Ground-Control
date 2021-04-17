@@ -1,44 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DESKTOP-S72B1RE</Machine>
-    <WindowsUser>jiajia</WindowsUser>
+    <Machine>LAPTOP-NAET92CJ</Machine>
+    <WindowsUser>miex</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>e8c840d8-001c-41c2-87a1-39bbddd00edb</PackageIdentityName>
-    <PackageIdentityPublisher>CN=jiajia</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\jiajia\source\repos\Ground-Control\obj\x86\Debug\</IntermediateOutputPath>
+    <PackageIdentityPublisher>CN=miex</PackageIdentityPublisher>
+    <IntermediateOutputPath>D:\ProgramData\Source\Repos\Ground-Control\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
-    <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>8D5BB07AD38C9D05FF811B3DE6E5987E656F61913AF0D82914DD10EB07299967</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>e8c840d8-001c-41c2-87a1-39bbddd00edb_1.0.0.0_x86__tta4e8s682fg2</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>e8c840d8-001c-41c2-87a1-39bbddd00edb_tta4e8s682fg2!App</RegisteredUserModeAppID>
+    <WindowsSdkPath>D:\Windows Kits\10\</WindowsSdkPath>
+    <LayoutDir>D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>A851E57CAA092894A17727B1F51D4AB6B7F2934B2D3E25C752593FCE09562307</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>e8c840d8-001c-41c2-87a1-39bbddd00edb_1.0.0.0_x86__pa0dtkzd3bby2</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>e8c840d8-001c-41c2-87a1-39bbddd00edb_pa0dtkzd3bby2!App</RegisteredUserModeAppID>
     <RegisteredPackageID>e8c840d8-001c-41c2-87a1-39bbddd00edb</RegisteredPackageID>
-    <RegisteredPackagePublisher>CN=jiajia</RegisteredPackagePublisher>
+    <RegisteredPackagePublisher>CN=miex</RegisteredPackagePublisher>
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-04-16T10:07:27.076</Modified>
+      <Modified>2021-04-17T18:00:55.704</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\Ground-Control.exe">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\Ground-Control.exe">
       <PackagePath>entrypoint\Ground-Control.exe</PackagePath>
-      <Modified>2021-04-16T10:07:26.711</Modified>
+      <Modified>2021-04-17T18:00:55.276</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\.nuget\packages\litedb\5.0.10\lib\netstandard2.0\LiteDB.dll">
+    <AppxPackagedFile Include="C:\Users\miex\.nuget\packages\litedb\5.0.10\lib\netstandard2.0\LiteDB.dll">
       <PackagePath>LiteDB.dll</PackagePath>
       <Modified>2021-01-09T12:46:58.000</Modified>
     </AppxPackagedFile>
@@ -46,71 +46,71 @@
       <PackagePath>System.Runtime.dll</PackagePath>
       <Modified>2020-11-20T01:09:24.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.19041.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
+    <AppxPackagedFile Include="D:\Windows Kits\10\bin\10.0.19041.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
       <Modified>2020-12-01T20:52:00.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2021-04-15T10:47:33.521</Modified>
+      <Modified>2021-04-17T12:25:45.242</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2021-04-15T08:07:55.567</Modified>
+      <Modified>2021-04-17T12:25:45.239</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-04-15T08:07:55.569</Modified>
+      <Modified>2021-04-17T12:25:45.240</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-04-15T08:07:55.569</Modified>
+      <Modified>2021-04-17T12:25:45.240</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-04-15T08:07:55.570</Modified>
+      <Modified>2021-04-17T12:25:45.240</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-04-15T08:07:55.570</Modified>
+      <Modified>2021-04-17T12:25:45.240</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-04-15T08:07:55.570</Modified>
+      <Modified>2021-04-17T12:25:45.241</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-04-15T08:07:55.571</Modified>
+      <Modified>2021-04-17T12:25:45.241</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\Ground-Control.xr.xml">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\Ground-Control.xr.xml">
       <PackagePath>Ground-Control.xr.xml</PackagePath>
-      <Modified>2021-04-16T08:52:54.767</Modified>
+      <Modified>2021-04-17T16:18:00.262</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2021-04-16T10:04:42.793</Modified>
+      <Modified>2021-04-17T18:00:55.218</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2021-04-16T10:04:42.793</Modified>
+      <Modified>2021-04-17T18:00:55.218</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
+    <AppxPackagedFile Include="D:\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2020-12-01T18:52:06.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2021-04-16T06:42:06.447</Modified>
+      <Modified>2021-04-17T17:38:20.946</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\Core\Ground-Control.exe">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\Core\Ground-Control.exe">
       <PackagePath>Ground-Control.exe</PackagePath>
-      <Modified>2021-04-16T10:07:27.073</Modified>
+      <Modified>2021-04-17T18:00:55.702</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

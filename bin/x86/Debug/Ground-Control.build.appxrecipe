@@ -1,88 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DESKTOP-S72B1RE</Machine>
-    <WindowsUser>jiajia</WindowsUser>
+    <Machine>LAPTOP-NAET92CJ</Machine>
+    <WindowsUser>miex</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>e8c840d8-001c-41c2-87a1-39bbddd00edb</PackageIdentityName>
-    <PackageIdentityPublisher>CN=jiajia</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\jiajia\source\repos\Ground-Control\obj\x86\Debug\</IntermediateOutputPath>
+    <PackageIdentityPublisher>CN=miex</PackageIdentityPublisher>
+    <IntermediateOutputPath>D:\ProgramData\Source\Repos\Ground-Control\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
-    <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\AppX</LayoutDir>
+    <WindowsSdkPath>D:\Windows Kits\10\</WindowsSdkPath>
+    <LayoutDir>D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\Ground-Control.exe">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\Ground-Control.exe">
       <PackagePath>entrypoint\Ground-Control.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\.nuget\packages\litedb\5.0.10\lib\netstandard2.0\LiteDB.dll">
+    <AppxPackagedFile Include="C:\Users\miex\.nuget\packages\litedb\5.0.10\lib\netstandard2.0\LiteDB.dll">
       <PackagePath>LiteDB.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.11\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.19041.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
+    <AppxPackagedFile Include="D:\Windows Kits\10\bin\10.0.19041.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\Ground-Control.xr.xml">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\Ground-Control.xr.xml">
       <PackagePath>Ground-Control.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
+    <AppxPackagedFile Include="D:\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jiajia\source\repos\Ground-Control\bin\x86\Debug\Core\Ground-Control.exe">
+    <AppxPackagedFile Include="D:\ProgramData\Source\Repos\Ground-Control\bin\x86\Debug\Core\Ground-Control.exe">
       <PackagePath>Ground-Control.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

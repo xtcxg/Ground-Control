@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:DesignWidth="900" d:DesignHeight="700">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:DesignWidth="920" d:DesignHeight="700">
 
     <Grid>
         <Pivot Background="{ThemeResource SystemControlAccentAcrylicWindowAccentMediumHighBrush}" >
@@ -20,20 +20,21 @@
             <PivotItem Header="order" Margin="0">
                 <Grid Background="White">
                     <RelativePanel>
-                        <StackPanel x:ConnectionId='3' x:Name="cmd_panel" Margin="20">
-
-                            <ComboBox x:ConnectionId='9' x:Name="script_chose" Width="300"  PlaceholderText="pick a script"
+                        <ComboBox x:ConnectionId='3' x:Name="script_chose" Width="250"  PlaceholderText="pick a script" Margin="10"
                                                                      >
-                            </ComboBox>
+                        </ComboBox>
+                        
+                        <StackPanel x:ConnectionId='4' x:Name="cmd_panel" Margin="20,45,20,20" Width="250">
                             <!--<Grid Margin="0"  Grid.Row="1"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
                                 <Button x:Name="cmd_add" Margin="20" Content="新增" Grid.Row="0" Grid.Column="0" />
                                 <Button x:Name="cmd_delete" Margin="100,20,20,20"  Content="删除" Foreground="Red"  Grid.Row="0" Grid.Column="1"/>
                                 <TextBlock Text="新增一条映射" Grid.Row="0" Grid.Column="1"/>
                             </Grid>-->
+                            <TextBlock Text="执行命令" FontFamily="Microsoft YaHei" FontSize="20" />
                             <RelativePanel Margin="0,10,0,10">
-                                <Button x:ConnectionId='11'  x:Name="add_cmd" Content="新增"  HorizontalAlignment="Left"               />
-                                <Button x:ConnectionId='12' x:Name="submit_cmd" Content="提交" RelativePanel.RightOf="add_cmd"                    Margin="10,0,0,0"/>
-                                <TextBlock Text="cmd管理" RelativePanel.RightOf="submit_cmd" Margin="15,10,10,0"/>
+                                <Button x:ConnectionId='14'  x:Name="add_cmd" Content="新增"  HorizontalAlignment="Left"               />
+                                <Button x:ConnectionId='15' x:Name="submit_cmd" Content="提交" RelativePanel.RightOf="add_cmd"                    Margin="10,0,0,0"/>
+                                
                             </RelativePanel>
                             <!--<ListView >
                                 <RelativePanel >
@@ -42,15 +43,29 @@
                                 </RelativePanel>
                             </ListView>-->
 
-                            <Grid x:ConnectionId='10' x:Name="cmd_list">
+                            <Grid x:ConnectionId='13' x:Name="cmd_list">
                             </Grid>
                             
                         </StackPanel>
-                        <StackPanel x:ConnectionId='4' x:Name="kv_panel" Margin="20" RelativePanel.RightOf="cmd_panel">
-                            <TextBox x:ConnectionId='5' x:Name="AssociateName" Header= "Associate" Margin="0,24,0,0" MaxLength="320" Width="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
-                            <TextBox x:ConnectionId='6' x:Name="AssociatePhoneNumber" Header="Phone Number" Margin="0,24,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="TelephoneNumber" />
-                            <DatePicker x:ConnectionId='7' x:Name="TargetInstallDate" Header="Target install Date" HorizontalAlignment="Left" Margin="0,24,0,0"></DatePicker>
-                            <TimePicker x:ConnectionId='8' x:Name="InstallTime" Header="Install Time" HorizontalAlignment="Left" Margin="0,24,0,0"></TimePicker>
+                        <StackPanel x:ConnectionId='5' x:Name="args_panel"  Margin="20,45,20,20" RelativePanel.RightOf="cmd_panel" Width="300">
+                            <TextBlock Text="参数映射" FontFamily="Microsoft YaHei" FontSize="20" />
+                            <Grid x:ConnectionId='10' x:Name="args_list">
+                            </Grid>
+                            <RelativePanel Margin="0,10,0,10">
+                                <Button x:ConnectionId='11'  x:Name="add_arg" Content="新增"  HorizontalAlignment="Left"               />
+                                <Button x:ConnectionId='12' x:Name="submit_arg" Content="提交" RelativePanel.RightOf="add_arg"                    Margin="10,0,0,0"/>
+                                
+                            </RelativePanel>
+                        </StackPanel>
+                        <StackPanel x:ConnectionId='6' x:Name="prop_panel"  Margin="20,45,20,20" RelativePanel.RightOf="args_panel" Width="250">
+                            <TextBlock Text="配置" FontFamily="Microsoft YaHei" FontSize="20" />
+                            <Grid x:ConnectionId='7' x:Name="prop_list">
+                            </Grid>
+                            <RelativePanel Margin="0,10,0,10">
+                                <Button x:ConnectionId='8'  x:Name="add_prop" Content="新增"  HorizontalAlignment="Left"               />
+                                <Button x:ConnectionId='9' x:Name="submit_prop" Content="提交" RelativePanel.RightOf="add_prop"                    Margin="10,0,0,0"/>
+
+                            </RelativePanel>
                         </StackPanel>
                     </RelativePanel>
                 </Grid>

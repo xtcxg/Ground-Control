@@ -134,5 +134,9 @@ namespace Ground_Control
             System.Diagnostics.Trace.WriteLine("delete " + rp.Name);
             cmd_list.Children.Remove(rp);
         }
+        private void SubmitArg(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

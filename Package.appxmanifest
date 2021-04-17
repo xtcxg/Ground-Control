@@ -8,14 +8,14 @@
 
   <Identity
     Name="e8c840d8-001c-41c2-87a1-39bbddd00edb"
-    Publisher="CN=jiajia"
+    Publisher="CN=miex"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="e8c840d8-001c-41c2-87a1-39bbddd00edb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Ground-Control</DisplayName>
-    <PublisherDisplayName>jiajia</PublisherDisplayName>
+    <PublisherDisplayName>miex</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -44,6 +44,7 @@
   </Applications>
 
   <Capabilities>
-    <Capability Name="internetClient" />
+    <uap:Capability Name="removableStorage"/>
+    <uap:Capability Name="userAccountInformation"/>
   </Capabilities>
 </Package>
