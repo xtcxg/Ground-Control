@@ -3,6 +3,10 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
 using System.Collections;
+using System.IO;
+using System.Text;
+using Microsoft.Extensions.Logging.Abstractions;
+using System.Text.Json;
 
 namespace Ground_Control
 {
@@ -23,39 +27,107 @@ namespace Ground_Control
         /// alias2 -> application
         /// </summary>
         public static Hashtable alias = new Hashtable();
-
-        System.Windows.Forms.Control HotKey = new HotKey();
+        HotKey HotKey = new HotKey();
         public MainWindow()
         {
             InitializeComponent();
-
+            FileInit();
             LoadApp();
         }
 
-        public void FisrtLoad()
+        /// <summary>
+        /// 别名<br/>
+        /// alias1 -> application<br/>
+        /// alias2 -> application
+        /// </summary>
+        public void FileInit()
         {
-
+            if(!Directory.Exists(@".\script"))
+            {
+                Directory.CreateDirectory(@".\script");
+            }
+            if (!Directory.Exists(@".\data"))
+            {
+                Directory.CreateDirectory(@".\data");
+                File.Create(@".\data\app.json");
+            }
         }
 
         public void LoadApp()
         {
-            string name = "open";
-            domain.Application app1 = new domain.Application(name);
-            apps.Add(name, app1);
+            string jsonString = File.ReadAllText(@".\data\app.json");
+            //Console.WriteLine(jsonString);
+            //var writerOptions = new JsonWriterOptions
+            //{
+            //    Indented = true
+            //};
+            var documentOptions = new JsonDocumentOptions
+            {
+                CommentHandling = JsonCommentHandling.Skip
+            };
+            //FileStream fs = File.Open(@".\data\app.json",FileMode.Open);
+            //var writer = new Utf8JsonWriter(fs, options: writerOptions);
+            JsonDocument json = JsonDocument.Parse(jsonString, documentOptions);
+            JsonElement root = json.RootElement;
+            foreach (JsonProperty e in root.EnumerateObject())
+            {
+                Console.WriteLine(e);
+                domain.Application app = new domain.Application(e.Name);
+                apps.Add(e.Name, app);
+                JsonElement j1 = e.Value;
+                foreach(JsonProperty e1 in j1.EnumerateObject())
+                {
+                    JsonElement v = e1.Value;
+                    if (e1.Name.Equals("version"))
+                    {
+                        app.version = e1.Value.GetString();
+                    }
+                    if (e1.Name.Equals("cmd"))
+                    {
+                        foreach (JsonProperty c in v.EnumerateObject())
+                        {
+                            app.cmds.Add(c.Name, c.Value.GetString());
+                            alias.Add(c.Name, app);
+                        }
+                    }
+                    if (e1.Name.Equals("arg"))
+                    {
+                        foreach (JsonProperty a in v.EnumerateObject())
+                        {
+                            app.args.Add(a.Name, a.Value.GetString());
+                        }
+                    }
+                    if (e1.Name.Equals("prop"))
+                    {
+                        foreach(JsonElement p in v.EnumerateArray())
+                        {
+                            app.props.Add(p.GetString());
+                        }
+                    }
+                }
+                Console.WriteLine(apps);
+            }
 
-            app1.cmds.Add("open", "open");
-            alias.Add("open", app1);
+            //string name = "open";
+            //domain.Application app1 = new domain.Application(name);
+            //apps.Add(name, app1);
 
-            app1.cmds.Add("op", "open");
-            alias.Add("op", app1);
+            //app1.cmds.Add("open", "open");
+            //alias.Add("open", app1);
 
-            app1.cmds.Add("download", "download");
-            alias.Add("download", app1);
+            //app1.cmds.Add("op", "open");
+            //alias.Add("op", app1);
 
-            app1.args.Add("git","-u https://github.com");
+            //app1.cmds.Add("opu", "open -u");
+            //alias.Add("opu", "open -u");
 
-            app1.props.Add("brower=chrome");
-            app1.props.Add("edit=notpad");
+            //app1.cmds.Add("download", "download");
+            //alias.Add("download", app1);
+
+            //app1.args.Add("git","https://github.com");
+
+            //app1.props.Add("brower=chrome");
+            //app1.props.Add("edit=notpad");
 
         }
     }

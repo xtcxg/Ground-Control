@@ -22,12 +22,13 @@ namespace Ground_Control
             {
                 // 执行order
                 Console.WriteLine("commit " + order);
+                order = order.Replace("  ", " ");
                 string[] arr = order.Split(' ');
                 
                 if (MainWindow.alias.ContainsKey(arr[0]))
                 {
                     domain.Application app = (domain.Application)MainWindow.alias[arr[0]];
-                    app.run(arr);
+                    app.Execute(arr);
                     this.Close();
                 } 
                 else
