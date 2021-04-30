@@ -4,21 +4,18 @@ using System.Collections.Generic;
 using System.Management.Automation.Runspaces;
 using System.Management.Automation;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Windows;
 
 namespace Ground_Control.domain
 {
     class Application
     {
         public enum ScriptType { CMD_SCRIPT,PS_SCRIPT}
-        public string name;
-        public string version;
-        public ScriptType type = ScriptType.PS_SCRIPT;
-
-        private Application() { }
-        public Application(string name)
-        {
-            this.name = name;
-        }
+        public string name = "";
+        public string version = "";
+        public string type = "ps";
+        public string describe = "";
 
         /// <summary>
         /// 命令列表 <br/>
@@ -37,6 +34,19 @@ namespace Ground_Control.domain
         /// </summary>
         public ArrayList props = new ArrayList();
 
+        public string Name { get => name; set => name = value; }
+        public string Version { get => version; set => version = value; }
+        public string Type { get => type; set => type = value; }
+        public Hashtable Args { get => args; set => args = value; }
+        public Hashtable Cmds { get => cmds; set => cmds = value; }
+        public ArrayList Props { get => props; set => props = value; }
+        public string Describe { get => describe; set => describe = value; }
+
+        private Application() { }
+        public Application(string name)
+        {
+            this.name = name;
+        }
         public void Execute(string cmd,string arg)
         {
             Console.WriteLine(cmd + " " + arg + " {[<" + props + ">]}");
@@ -48,7 +58,16 @@ namespace Ground_Control.domain
         public void Execute(string[] array)
         {
             string script = @".\script\" + this.name + @"\app.ps1"; // 脚本地址
+            if (!File.Exists(script))
+            {
+                MessageBox.Show("<" + script + ">" + "不存在");
+                return;
+            }
+            
+            //string script = "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted; Get-ExecutionPolicy";
             PowerShell ps = PowerShell.Create();
+            ps.AddScript("Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted;");
+            ps.Invoke();
             ps.AddCommand(script);  // 添加执行命令
 
             // 开始组装完整命令

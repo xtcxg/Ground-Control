@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Ground_Control"
+        xmlns:local="clr-namespace:Ground_Control" 
         mc:Ignorable="d"
-        Title="Ground-Control" Height="450" Width="800">
+        Title="Ground-Control" MinHeight="450" Height="450" Width="840">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="55"/>
@@ -14,71 +14,100 @@
 
         <TextBlock Text="Ground-Control" Background="#FF64A6E4" Margin="0,0,0,0"  Grid.Row="0" FontSize="16" FontWeight="Bold" Foreground="Black"/>
 
-        <TabControl Margin="0,-26,0,0" Background="White" Grid.Row="1" BorderThickness="0" FontSize="14" >
-            <TabItem Header="order" Width="60" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+        <TabControl Margin="0,-27,0,0" Background="White" Grid.Row="1" BorderThickness="0" FontSize="14" >
+            <TabItem Header="order" Width="60" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" >
                 <Grid>
                     <Grid.RowDefinitions >
-                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="29"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition MinWidth="200"/>
-                        <ColumnDefinition MinWidth="320"/>
-                        <ColumnDefinition MinWidth="250"/>
+                        <ColumnDefinition MinWidth="280"/>
+                        <ColumnDefinition MinWidth="280"/>
+                        <ColumnDefinition MinWidth="280"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Row="0" Grid.Column="0">
-                        <ComboBox Name="script_list" Text="choose script" IsEditable="False" IsReadOnly="true" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,2,0,2">
+                        <ComboBox Name="script_list" Text="choose script" IsEditable="True" IsReadOnly="True" 
+                                  VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"
+                                  SelectionChanged="ScriptChanged"/>
                     </StackPanel>
                     <!--cmd-->
                     <StackPanel Grid.Row="1" Grid.Column="0">
                         <StackPanel>
                             <TextBlock Text="执行命令"/>
                         </StackPanel>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="550">
                         <StackPanel Name="cmd_list">
-                            
+
                         </StackPanel>
+                        </ScrollViewer>
                         <DockPanel Width="120" Margin="0,10,0,0" HorizontalAlignment="Left">
-                            <Button Name="cmd_add" Content="添加" Width="50" HorizontalAlignment="Left"/>
-                            <Button Name="cmd_submit" Content="提交" Width="50" HorizontalAlignment="Right"/>
+                            <Button Name="cmd_add" Content="添加" Width="50" HorizontalAlignment="Left" Click="CmdAdd"/>
+                            <Button Name="cmd_submit" Content="提交" Width="50" HorizontalAlignment="Right" ClickMode="Release" Click="CmdSubmit"/>
                         </DockPanel>
                     </StackPanel>
-                    
+
                     <!--arg-->
                     <StackPanel Grid.Row="1" Grid.Column="1">
                         <StackPanel>
                             <TextBlock Text="参数映射"/>
                         </StackPanel>
-                        <StackPanel Name="arg_list">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="550">
+                            <StackPanel Name="arg_list">
 
-                        </StackPanel>
-                        <DockPanel Width="120" Margin="0,10,0,0" HorizontalAlignment="Left">
-                            <Button Name="arg_add" Content="添加" Width="50" HorizontalAlignment="Left"/>
-                            <Button Name="arg_submit" Content="提交" Width="50" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </ScrollViewer>
+                        <DockPanel MinWidth="120" Width="120" Margin="0,10,0,0" HorizontalAlignment="Left">
+                            <Button Name="arg_add" Content="添加" Width="50" HorizontalAlignment="Left" Click="ArgAdd"/>
+                            <Button Name="arg_submit" Content="提交" Width="50" HorizontalAlignment="Right" Click="ArgSubmit"/>
                         </DockPanel>
                     </StackPanel>
-                    
-                    <!--arg-->
+
+                    <!--prop-->
                     <StackPanel Grid.Row="1" Grid.Column="2">
                         <StackPanel>
                             <TextBlock Text="配置信息"/>
                         </StackPanel>
-                        <StackPanel Name="prop_list">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="550">
+                            <StackPanel Name="prop_list">
 
-                        </StackPanel>
+                            </StackPanel>
+                        </ScrollViewer>
                         <DockPanel Width="120" Margin="0,10,0,0" HorizontalAlignment="Left">
-                            <Button Name="prop_add" Content="添加" Width="50" HorizontalAlignment="Left"/>
-                            <Button Name="prop_submit" Content="提交" Width="50" HorizontalAlignment="Right"/>
+                            <Button Name="prop_add" Content="添加" Width="50" HorizontalAlignment="Left"  Click="PropAdd"/>
+                            <Button Name="prop_submit" Content="提交" Width="50" HorizontalAlignment="Right" Click="PropSubmit"/>
                         </DockPanel>
                     </StackPanel>
                 </Grid>
 
 
             </TabItem>
-            <TabItem Header="script" Width="60" Height="25" Background="{x:Null}" BorderBrush="{x:Null}">
-                <StackPanel >
-                    <Button Content="_OK"/>
-                    <Button Content="_Cancel"/>
-                </StackPanel>
+            <TabItem Header="script" Width="60" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Selector.Selected="ScriptSelected">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="29"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="600"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0">
+                        <TextBlock Text="脚本列表"  Margin="3" FontWeight="Bold" FontSize="16" FontFamily="Microsoft YaHei"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="1">
+                        <TextBlock Text="脚本描述"  Margin="3" FontWeight="Bold" FontSize="16" FontFamily="Microsoft YaHei"/>
+                    </StackPanel>
+                    <StackPanel Name="scrips" Grid.Row="1" Grid.Column="0">
+                        
+                    </StackPanel>
+                    <Border BorderBrush="Black" BorderThickness="1px 0 0 0" Grid.Row="1" Grid.Column="1">
+                        <StackPanel  >
+                            <TextBlock Text="descript" Name="describe"></TextBlock>
+                        </StackPanel>
+                    </Border>
+
+                </Grid>
             </TabItem>
             <TabItem Header="setting" Width="60" Height="25" Background="{x:Null}" BorderBrush="{x:Null}"></TabItem>
         </TabControl>

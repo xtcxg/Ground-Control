@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("Ground-Control")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("com.miex")]
 [assembly: AssemblyProduct("Ground-Control")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
