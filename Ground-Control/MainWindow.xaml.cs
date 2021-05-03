@@ -168,6 +168,9 @@ namespace Ground_Control
         void InitCombox()
         {
             this.script_list.Items.Clear();
+            this.cmd_list.Children.Clear();
+            this.arg_list.Children.Clear();
+            this.prop_list.Children.Clear();
             foreach (string name in apps.Keys)
             {
                 ComboBoxItem item = new ComboBoxItem
@@ -252,9 +255,21 @@ namespace Ground_Control
             Console.WriteLine(apps);
         }
 
+        ///---------------------order页面逻辑----------------///
+        private void OrderSelected(object sender, RoutedEventArgs route )
+        {
+            InitCombox();
+        }
+
+        /// <summary>
+        /// combox 选项发生改变
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ScriptChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem item = (sender as System.Windows.Controls.ComboBox).SelectedItem as ComboBoxItem;
+            if (null == item) return;
             string name = item.Content.ToString();
             Console.WriteLine(name);
 
@@ -524,9 +539,18 @@ namespace Ground_Control
             fs.Close();
         }
 
+
+        ///-------------------------script 页面逻辑------------------------------///
+
+        /// <summary>
+        /// 点击script 标签
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ScriptSelected(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("script select");
+            appActive = null;
             this.scrips.Children.Clear();
             System.Collections.Generic.IEnumerable<string> dirs = Directory.EnumerateDirectories(@".\script\");
             
@@ -575,6 +599,11 @@ namespace Ground_Control
             }
         }
 
+        /// <summary>
+        /// 点击添加按钮，添加一个脚本
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ScriptAdd(object sender, RoutedEventArgs e)
         {
             
