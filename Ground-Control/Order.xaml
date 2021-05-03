@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Ground_Control"
         mc:Ignorable="d" ResizeMode="NoResize"
         Title="input order" MinHeight="70" MinWidth="250" Height="70" Width="250" Padding="0"
-        FocusManager.FocusedElement="{Binding ElementName=order}">
+        FocusManager.FocusedElement="{Binding ElementName=order}" ShowActivated="True" Topmost="True">
     <DockPanel Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" >
         <ComboBox IsEditable="True" IsReadOnly="False"  Name="order" Width="210" Height="25" HorizontalAlignment="Left" FontSize="14" FontFamily="Consolas" />
         <Button Name="commit_order" Width="30" Height="25"  Content=">" HorizontalAlignment="Right" Click="OrderCommit"/>

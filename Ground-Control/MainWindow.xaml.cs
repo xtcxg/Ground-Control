@@ -19,17 +19,29 @@ namespace Ground_Control
     {
         /// <summary>
         /// 应用列表 <br/>
-        /// name -> application
+        /// key - name <br/>
+        /// value - application<br/>
         /// </summary>
         public Hashtable apps = new Hashtable();
 
         /// <summary>
-        /// 别名<br/>
+        /// 别名,用于存储所有的cmd与对应的app，当cmd更新时需要刷新数据<br/>
         /// alias1 -> application<br/>
         /// alias2 -> application
         /// </summary>
         public static Hashtable alias = new Hashtable();
 
+        /// <summary>
+        /// script info<br/>
+        /// 记录原始的conf.json中的数据<br/>
+        /// key - name<br/>
+        /// value - domain.Application(conf.json)<br/>
+        /// </summary>
+        public static Hashtable si = new Hashtable();
+
+        /// <summary>
+        /// combox选择的app
+        /// </summary>
         private static domain.Application appActive;
 
         HotKey HotKey = new HotKey();
@@ -42,9 +54,9 @@ namespace Ground_Control
         }
 
         /// <summary>
-        /// 别名<br/>
-        /// alias1 -> application<br/>
-        /// alias2 -> application
+        /// 初始化目录<br/>
+        /// 1.如果没有script目录，创建目录并从github获取脚本数据<br/>
+        /// 2.如果没有data目录，创建目录与app.json文件
         /// </summary>
         public void FileInit()
         {
@@ -65,6 +77,9 @@ namespace Ground_Control
             }
         }
 
+        /// <summary>
+        /// 从github上获取脚本文件
+        /// </summary>
         private void GetScript()
         {
             string url = "https://codeload.github.com/xtcxg/Ground-Control-Script/zip/refs/heads/main";
@@ -165,9 +180,15 @@ namespace Ground_Control
             /// 结束解压main.zip
         }
 
+        /// <summary>
+        /// 根据apps中的数据初始化combobox
+        /// </summary>
         void InitCombox()
         {
             this.script_list.Items.Clear();
+            this.cmd_list.Children.Clear();
+            this.arg_list.Children.Clear();
+            this.prop_list.Children.Clear();
             foreach (string name in apps.Keys)
             {
                 ComboBoxItem item = new ComboBoxItem
@@ -178,6 +199,9 @@ namespace Ground_Control
             }
         }
 
+        /// <summary>
+        /// 根据app.json中的数据，初始化apps
+        /// </summary>
         public void LoadApp()
         {
             if (!File.Exists(@".\data\app.json"))
@@ -187,17 +211,10 @@ namespace Ground_Control
                 fs.Close();
             }
             string jsonString = File.ReadAllText(@".\data\app.json");
-            //Console.WriteLine(jsonString);
-            //var writerOptions = new JsonWriterOptions
-            //{
-            //    Indented = true
-            //};
             var documentOptions = new JsonDocumentOptions
             {
                 CommentHandling = JsonCommentHandling.Skip
             };
-            //FileStream fs = File.Open(@".\data\app.json",FileMode.Open);
-            //var writer = new Utf8JsonWriter(fs, options: writerOptions);
             JsonDocument json = JsonDocument.Parse(jsonString, documentOptions);
             JsonElement root = json.RootElement;
             foreach (JsonProperty e in root.EnumerateObject())
@@ -249,12 +266,24 @@ namespace Ground_Control
                     app.Describe = e1.Value.GetString();
                 }
             }
-            Console.WriteLine(apps);
+            //Console.WriteLine(apps);
         }
 
+        ///---------------------order页面逻辑----------------///
+        private void OrderSelected(object sender, RoutedEventArgs route )
+        {
+            InitCombox();
+        }
+
+        /// <summary>
+        /// combox 选项发生改变
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ScriptChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem item = (sender as System.Windows.Controls.ComboBox).SelectedItem as ComboBoxItem;
+            if (null == item) return;
             string name = item.Content.ToString();
             Console.WriteLine(name);
 
@@ -305,7 +334,7 @@ namespace Ground_Control
             TextBox alias = new TextBox()
             {
                 Text = l,
-                MinWidth = 80
+                Width = 80
             };
             TextBlock block = new TextBlock()
             {
@@ -315,7 +344,7 @@ namespace Ground_Control
             TextBox full = new TextBox()
             {
                 Text = r,
-                MinWidth = 120
+                Width = 120
             };
             Button del = new Button()
             {
@@ -342,7 +371,11 @@ namespace Ground_Control
             this.cmd_list.Children.Remove(panel);
         }
 
-        // cmd 提交变更
+        /// <summary>
+        /// cmd 提交变更
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CmdSubmit(object sender, RoutedEventArgs e)
         {
             if (null == appActive) return;
@@ -360,11 +393,32 @@ namespace Ground_Control
                     return;
                 }
                 Console.WriteLine((array[0] as TextBox).Text + "=" + (array[2] as TextBox).Text);
+                if(temp.ContainsKey((array[0] as TextBox).Text))
+                {
+                    MessageBox.Show("命令key值不能重复");
+                    return;
+                }
                 temp.Add((array[0] as TextBox).Text, (array[2] as TextBox).Text);
             }
             appActive.cmds.Clear();
             appActive.cmds = temp;
+            RefreshAlias();
             Write();
+        }
+
+        /// <summary>
+        /// 刷新alias
+        /// </summary>
+        private void RefreshAlias()
+        {
+            alias.Clear();
+            foreach(domain.Application a in apps.Values)
+            {
+                foreach(string c in a.cmds.Keys)
+                {
+                    alias.Add(c, a);
+                }
+            }
         }
 
         // arg 新增一条数据
@@ -435,6 +489,11 @@ namespace Ground_Control
                 if ("".Equals((array[0] as TextBox).Text.Trim()))
                 {
                     MessageBox.Show("参数key值不能为空");
+                    return;
+                }
+                if (temp.ContainsKey((array[0] as TextBox).Text))
+                {
+                    MessageBox.Show("参数key值不能重复");
                     return;
                 }
                 Console.WriteLine((array[0] as TextBox).Text + "=" + (array[2] as TextBox).Text);
@@ -524,36 +583,70 @@ namespace Ground_Control
             fs.Close();
         }
 
+
+        ///-------------------------script 页面逻辑------------------------------///
+
+        /// <summary>
+        /// 点击script 标签
+        /// 1.获取script文件夹下的脚本信息
+        /// 2.创建元素信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ScriptSelected(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("script select");
-            this.scrips.Children.Clear();
+            appActive = null;
+            si.Clear();
+            this.scripts.Children.Clear();
+            this.script_describe.Text = "";
             System.Collections.Generic.IEnumerable<string> dirs = Directory.EnumerateDirectories(@".\script\");
             
             foreach(string dir in dirs)
             {
+                
                 string name = dir.Replace(".\\script\\", "");
+                if (!File.Exists(dir + @"\conf.json"))
+                {
+                    continue;
+                }
+                string conf = File.ReadAllText(dir + @"\conf.json");
+                JsonSerializerOptions options = new JsonSerializerOptions()
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    WriteIndented = true,
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(new System.Text.Encodings.Web.TextEncoderSettings(System.Text.Unicode.UnicodeRanges.All))
+                };
+                JsonDocument json = JsonDocument.Parse(conf);
+                JsonElement root = json.RootElement;
+                Console.WriteLine(root.GetProperty(name).ToString());
+                domain.Application app = JsonSerializer.Deserialize<domain.Application>(root.GetProperty(name).ToString(), options);
+
+                si.Add(name,app);
 
                 DockPanel panel = new DockPanel()
                 {
                     Margin = new Thickness(5, 3, 0, 3),
                 };
-                // 为已加载的脚本上色
-                if (apps.ContainsKey(name))
-                {
-                    panel.Background = new SolidColorBrush(Color.FromArgb(120, 127, 255, 170));
-                }
+
                 TextBlock box = new TextBlock()
                 {
                     Text = name,
                     Width = 300
                 };
+                // 为已加载的脚本上色
+                if (apps.ContainsKey(name))
+                {
+                    box.Background = new SolidColorBrush(Color.FromArgb(120, 127, 255, 170));
+                }
+                // 展示描述信息
+                box.MouseLeftButtonDown += ScriptChose;
                 Button add = new Button
                 {
                     Name = name,
                     Width = 45,
                     Margin = new Thickness(5, 0, 0, 0),
-                    Content = "加入",
+                    Content = "启用",
                     HorizontalAlignment = HorizontalAlignment.Left
                 };
                 add.Click += ScriptAdd;
@@ -562,19 +655,51 @@ namespace Ground_Control
                     Name = name,
                     Width = 45,
                     Margin = new Thickness(5, 0, 0, 0),
-                    Content = "移除",
+                    Content = "停用",
                     HorizontalAlignment = HorizontalAlignment.Left
                 };
                 rem.Click += ScriptRemove;
+                //Button uninstall = new Button
+                //{
+                //    Name = name,
+                //    Width = 45,
+                //    Margin = new Thickness(5, 0, 0, 0),
+                //    Content = "卸载",
+                //    HorizontalAlignment = HorizontalAlignment.Left
+                //};
 
                 panel.Children.Add(box);
                 panel.Children.Add(add);
                 panel.Children.Add(rem);
-                this.scrips.Children.Add(panel);
+                this.scripts.Children.Add(panel);
                 Console.WriteLine(dir);
             }
         }
 
+        private void ScriptChose(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DockPanel panel = (sender as TextBlock).Parent as DockPanel;
+            UIElement[] array = new UIElement[panel.Children.Count];
+            panel.Children.CopyTo(array, 0);
+            string name = (array[0] as TextBlock).Text;
+            Console.WriteLine(name);
+            foreach(DictionaryEntry s in si)
+            {
+                if (s.Key.Equals(name))
+                {
+                    string describe = (s.Value as domain.Application).describe;
+                    Console.WriteLine(describe);
+                    this.script_describe.Text = describe;
+                    return;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 点击添加按钮，添加一个脚本
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ScriptAdd(object sender, RoutedEventArgs e)
         {
             
@@ -584,7 +709,9 @@ namespace Ground_Control
                 return;
             
             DockPanel panel = btn.Parent as DockPanel;
-            panel.Background = new SolidColorBrush(Color.FromArgb(120, 127, 255, 170));
+            UIElement[] array = new UIElement[panel.Children.Count];
+            panel.Children.CopyTo(array, 0);
+            (array[0] as TextBlock).Background = new SolidColorBrush(Color.FromArgb(120, 127, 255, 170));
 
             string conf = File.ReadAllText(@".\script\" + name + @"\conf.json");
             Console.WriteLine(conf);
@@ -612,7 +739,9 @@ namespace Ground_Control
             string name = btn.Name;
             Console.WriteLine(name);
             DockPanel panel = btn.Parent as DockPanel;
-            panel.Background = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+            UIElement[] array = new UIElement[panel.Children.Count];
+            panel.Children.CopyTo(array, 0);
+            (array[0] as TextBlock).Background = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
             if (!apps.ContainsKey(name))
                 return;
             foreach(DictionaryEntry app in apps)

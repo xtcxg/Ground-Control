@@ -15,7 +15,7 @@
         <TextBlock Text="Ground-Control" Background="#FF64A6E4" Margin="0,0,0,0"  Grid.Row="0" FontSize="16" FontWeight="Bold" Foreground="Black"/>
 
         <TabControl Margin="0,-27,0,0" Background="White" Grid.Row="1" BorderThickness="0" FontSize="14" >
-            <TabItem Header="order" Width="60" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" >
+            <TabItem Header="order" Width="60" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Selector.Selected="OrderSelected">
                 <Grid>
                     <Grid.RowDefinitions >
                         <RowDefinition Height="29"/>
@@ -96,14 +96,14 @@
                         <TextBlock Text="脚本列表"  Margin="3" FontWeight="Bold" FontSize="16" FontFamily="Microsoft YaHei"/>
                     </StackPanel>
                     <StackPanel Grid.Row="0" Grid.Column="1">
-                        <TextBlock Text="脚本描述"  Margin="3" FontWeight="Bold" FontSize="16" FontFamily="Microsoft YaHei"/>
+                        <TextBlock  Text="脚本描述"  Margin="3" FontWeight="Bold" FontSize="16" FontFamily="Microsoft YaHei"/>
                     </StackPanel>
-                    <StackPanel Name="scrips" Grid.Row="1" Grid.Column="0">
+                    <StackPanel Name="scripts" Grid.Row="1" Grid.Column="0">
                         
                     </StackPanel>
                     <Border BorderBrush="Black" BorderThickness="1px 0 0 0" Grid.Row="1" Grid.Column="1">
                         <StackPanel  >
-                            <TextBlock Text="descript" Name="describe"></TextBlock>
+                            <TextBlock Name="script_describe" Text=""></TextBlock>
                         </StackPanel>
                     </Border>
 
