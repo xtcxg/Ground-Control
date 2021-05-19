@@ -45,12 +45,38 @@ namespace Ground_Control
         private static domain.Application appActive;
 
         HotKey HotKey = new HotKey();
+
+        WindowState ws;
+        System.Windows.Forms.NotifyIcon notifyIcon;
         public MainWindow()
         {
             InitializeComponent();
             FileInit();
             LoadApp();
             InitCombox();
+            ws = WindowState;
+            icon();
+        }
+
+        private void icon()
+        {
+            string path = Path.GetFullPath(@"Resources\base.ico");
+            if (File.Exists(path))
+            {
+                Console.WriteLine("in");
+                this.notifyIcon = new System.Windows.Forms.NotifyIcon();
+                this.notifyIcon.BalloonTipText = "Ground Control"; //设置程序启动时显示的文本
+                this.notifyIcon.Text = "Ground Control";//最小化到托盘时，鼠标点击时显示的文本
+                System.Drawing.Icon icon = new System.Drawing.Icon(path);//程序图标 
+                this.notifyIcon.Icon = icon;
+                this.notifyIcon.Visible = true;
+                this.notifyIcon.Click += Reduction;
+                this.notifyIcon.ShowBalloonTip(1000);
+            }
+        }
+        private void Reduction(object sender, EventArgs e) {
+            this.Show();
+            WindowState = ws;
         }
 
         /// <summary>
@@ -63,7 +89,7 @@ namespace Ground_Control
             if (!Directory.Exists(@".\script"))
             {
                 Directory.CreateDirectory(@".\script");
-                new System.Threading.Thread( () =>
+                new System.Threading.Thread(() =>
                 {
                     GetScript();
                 }).Start();
@@ -72,7 +98,7 @@ namespace Ground_Control
             {
                 Directory.CreateDirectory(@".\data");
                 FileStream fs = File.Open(@".\data\app.json", FileMode.OpenOrCreate);
-                fs.Write(Encoding.Default.GetBytes("{}"),0,2);
+                fs.Write(Encoding.Default.GetBytes("{}"), 0, 2);
                 fs.Close();
             }
         }
@@ -130,7 +156,7 @@ namespace Ground_Control
                         fileName = fileName.Replace("Ground-Control-Script-main", "");
                         fileName = fileName.Replace("//", "/");
                         fileName = fileName.Replace('/', '\\');
-                        
+
 
                         if (fileName.EndsWith("\\"))
                         {
@@ -219,7 +245,7 @@ namespace Ground_Control
             JsonElement root = json.RootElement;
             foreach (JsonProperty e in root.EnumerateObject())
             {
-                Console.WriteLine(e);
+                //Console.WriteLine(e);
                 CreateApplication(e);
             }
         }
@@ -270,7 +296,7 @@ namespace Ground_Control
         }
 
         ///---------------------order页面逻辑----------------///
-        private void OrderSelected(object sender, RoutedEventArgs route )
+        private void OrderSelected(object sender, RoutedEventArgs route)
         {
             InitCombox();
         }
@@ -287,7 +313,7 @@ namespace Ground_Control
             string name = item.Content.ToString();
             Console.WriteLine(name);
 
-            foreach(DictionaryEntry a in apps)
+            foreach (DictionaryEntry a in apps)
             {
                 if (a.Key.Equals(name))
                 {
@@ -306,13 +332,13 @@ namespace Ground_Control
             }
 
             // args
-            foreach(DictionaryEntry a in appActive.args)
+            foreach (DictionaryEntry a in appActive.args)
             {
                 CreateArg(a.Key.ToString(), a.Value.ToString());
             }
 
             // prop 
-            foreach(string p in appActive.props)
+            foreach (string p in appActive.props)
             {
                 CreateProp(p);
             }
@@ -325,7 +351,7 @@ namespace Ground_Control
             CreateCmd();
         }
 
-        private void CreateCmd(string l = "",string r = "")
+        private void CreateCmd(string l = "", string r = "")
         {
             DockPanel panel = new DockPanel()
             {
@@ -393,7 +419,7 @@ namespace Ground_Control
                     return;
                 }
                 Console.WriteLine((array[0] as TextBox).Text + "=" + (array[2] as TextBox).Text);
-                if(temp.ContainsKey((array[0] as TextBox).Text))
+                if (temp.ContainsKey((array[0] as TextBox).Text))
                 {
                     MessageBox.Show("命令key值不能重复");
                     return;
@@ -412,9 +438,9 @@ namespace Ground_Control
         private void RefreshAlias()
         {
             alias.Clear();
-            foreach(domain.Application a in apps.Values)
+            foreach (domain.Application a in apps.Values)
             {
-                foreach(string c in a.cmds.Keys)
+                foreach (string c in a.cmds.Keys)
                 {
                     alias.Add(c, a);
                 }
@@ -428,7 +454,7 @@ namespace Ground_Control
             CreateArg();
         }
 
-        private void CreateArg(string l = "",string r = "")
+        private void CreateArg(string l = "", string r = "")
         {
             DockPanel panel = new DockPanel()
             {
@@ -479,7 +505,7 @@ namespace Ground_Control
             if (null == appActive) return;
             Console.WriteLine("cmd submit");
             UIElementCollection ps = this.arg_list.Children;
-            
+
             Hashtable temp = new Hashtable();
             foreach (UIElement p in ps)
             {
@@ -522,7 +548,7 @@ namespace Ground_Control
             if (null == appActive) return;
             Console.WriteLine("prop submit");
             UIElementCollection ps = this.prop_list.Children;
-            
+
             ArrayList temp = new ArrayList();
             foreach (UIElement p in ps)
             {
@@ -601,10 +627,10 @@ namespace Ground_Control
             this.scripts.Children.Clear();
             this.script_describe.Text = "";
             System.Collections.Generic.IEnumerable<string> dirs = Directory.EnumerateDirectories(@".\script\");
-            
-            foreach(string dir in dirs)
+
+            foreach (string dir in dirs)
             {
-                
+
                 string name = dir.Replace(".\\script\\", "");
                 if (!File.Exists(dir + @"\conf.json"))
                 {
@@ -622,7 +648,7 @@ namespace Ground_Control
                 Console.WriteLine(root.GetProperty(name).ToString());
                 domain.Application app = JsonSerializer.Deserialize<domain.Application>(root.GetProperty(name).ToString(), options);
 
-                si.Add(name,app);
+                si.Add(name, app);
 
                 DockPanel panel = new DockPanel()
                 {
@@ -683,7 +709,7 @@ namespace Ground_Control
             panel.Children.CopyTo(array, 0);
             string name = (array[0] as TextBlock).Text;
             Console.WriteLine(name);
-            foreach(DictionaryEntry s in si)
+            foreach (DictionaryEntry s in si)
             {
                 if (s.Key.Equals(name))
                 {
@@ -702,12 +728,12 @@ namespace Ground_Control
         /// <param name="e"></param>
         private void ScriptAdd(object sender, RoutedEventArgs e)
         {
-            
+
             Button btn = sender as Button;
             string name = btn.Name;
             if (apps.ContainsKey(name))
                 return;
-            
+
             DockPanel panel = btn.Parent as DockPanel;
             UIElement[] array = new UIElement[panel.Children.Count];
             panel.Children.CopyTo(array, 0);
@@ -744,11 +770,11 @@ namespace Ground_Control
             (array[0] as TextBlock).Background = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
             if (!apps.ContainsKey(name))
                 return;
-            foreach(DictionaryEntry app in apps)
+            foreach (DictionaryEntry app in apps)
             {
                 if (name.Equals(app.Key))
                 {
-                    foreach(string c in (app.Value as domain.Application).Cmds.Keys)
+                    foreach (string c in (app.Value as domain.Application).Cmds.Keys)
                     {
                         alias.Remove(c);
                     }
@@ -758,11 +784,20 @@ namespace Ground_Control
             InitCombox();
             Write();
         }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("change");
+            if(this.WindowState == WindowState.Minimized)
+            {
+                this.Hide();
+            }
+        }
     }
 
     class HotKey : System.Windows.Forms.Control
     {
-        
+
         public HotKey()
         {
             RegisterHotKey(Handle, 100, KeyModifiers.Ctrl, System.Windows.Forms.Keys.I);
