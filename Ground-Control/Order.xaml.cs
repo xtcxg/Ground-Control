@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Collections.Generic;
 
 namespace Ground_Control
 {
@@ -21,10 +22,8 @@ namespace Ground_Control
             if (null != order)
             {
                 // 执行order
-                Console.WriteLine("commit " + order);
-                order = order.Replace("  ", " ");
                 string[] arr = order.Split(' ');
-                
+
                 if (MainWindow.alias.ContainsKey(arr[0]))
                 {
                     domain.Application app = (domain.Application)MainWindow.alias[arr[0]];
@@ -43,5 +42,7 @@ namespace Ground_Control
             Console.WriteLine("exit");
             this.Close();
         }
+
+
     }
 }

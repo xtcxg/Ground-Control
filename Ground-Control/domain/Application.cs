@@ -99,13 +99,39 @@ namespace Ground_Control.domain
             runspace.Open();
 
             // 将完整命令转为脚本参数
-            array = complate.Split(' ');
+            array = SplitOrder(complate);
             foreach(string a in array)
             {
                 Console.WriteLine(a);
                 ps.AddArgument(a);
             }
             Collection<PSObject> res = ps.Invoke(); // 执行脚本
+        }
+
+        private string[] SplitOrder(string order)
+        {
+            List<string> list = new List<string>();
+            List<char> chs = new List<char>();
+            Boolean flag = false;
+            foreach (char ch in order)
+            {
+                if (!' '.Equals(ch) || flag)
+                {
+                    if ('"'.Equals(ch))
+                        if (flag) flag = false;
+                        else flag = true;
+                    chs.Add(ch);
+                }
+                else
+                {
+                    if (chs.Count != 0)
+                    {
+                        list.Add(string.Concat(chs));
+                        chs.Clear();
+                    }
+                }
+            }
+            return list.ToArray();
         }
     }
 }
